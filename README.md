@@ -1,2 +1,129 @@
-# Valentine.html
-Valentine.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine?</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Arial', sans-serif;
+        overflow: hidden;
+    }
+
+    .container {
+        text-align: center;
+        color: #fff;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .buttons {
+        position: relative;
+        height: 200px;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+        position: absolute;
+    }
+
+    #yesBtn {
+        background-color: #ff4d6d;
+        color: white;
+        animation: blink 1s infinite;
+    }
+
+    #noBtn {
+        background-color: #ffffff;
+        color: #ff4d6d;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+    }
+
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0.4; }
+        100% { opacity: 1; }
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .message {
+        font-size: 2rem;
+        margin-top: 20px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Pineapple (VIDHI) 🍍<br>Will you be my Valentine? 💖</h1>
+
+    <div class="buttons">
+        <button id="yesBtn" disabled>YES 💕</button>
+        <button id="noBtn" disabled>NO 🙃</button>
+    </div>
+
+    <div class="message hidden" id="message"></div>
+</div>
+
+<script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
+
+    let startTime = Date.now();
+
+    const moveYesButton = setInterval(() => {
+        let x = Math.random() * (window.innerWidth - 150);
+        let y = Math.random() * (window.innerHeight - 150);
+        yesBtn.style.left = x + "px";
+        yesBtn.style.top = y + "px";
+    }, 800);
+
+    // After 30 seconds
+    setTimeout(() => {
+        clearInterval(moveYesButton);
+        yesBtn.disabled = false;
+        noBtn.disabled = false;
+        yesBtn.style.animation = "none";
+        yesBtn.style.left = "50%";
+        yesBtn.style.top = "50%";
+        yesBtn.style.transform = "translate(-50%, -50%)";
+    }, 30000);
+
+    yesBtn.addEventListener("click", () => {
+        message.classList.remove("hidden");
+        message.innerHTML = "YAYYY 💕💍<br>Best Valentine ever!";
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+    });
+
+    noBtn.addEventListener("click", () => {
+        message.classList.remove("hidden");
+        message.innerHTML = "😏 Are you sure?<br>Think again, Pineapple 🍍";
+    });
+</script>
+
+</body>
+</html>
+
