@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Valentine's Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #image { display: none; margin-top: 20px; }
+        button { padding: 10px 20px; font-size: 16px; }
+    </style>
 </head>
 <body>
-    <div id="message"></div>
-    <button id="yesBtn">Yes</button>
-    <script>
-        const message = document.getElementById('message');
-        const yesBtn = document.getElementById('yesBtn');
+    <h1>Happy Valentine's Day!</h1>
+    <button id="yesButton">YES</button>
+    <img id="image" src="WhatsApp Image 2026-02-07 at 9.41.16 AM.jpg" alt="Valentine's Image" />
 
-        yesBtn.addEventListener('click', function() {
-            message.innerHTML = '<img src="WhatsApp Image 2026-02-07 at 9.41.16 AM.jpg" alt="My Love" style="width: 300px; border-radius: 20px; margin-bottom: 20px;"><br><br>YAYYY 💕💍<br>Best Valentine ever!';
-        });
+    <script>
+        document.getElementById('yesButton').onclick = function() {
+            document.getElementById('image').style.display = 'block';
+        };
     </script>
 </body>
 </html>
